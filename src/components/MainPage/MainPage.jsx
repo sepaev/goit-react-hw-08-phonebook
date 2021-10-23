@@ -8,7 +8,8 @@ function MainPage({ message }) {
   return (
     <div>
       <TextH2>{message}</TextH2>
-      {!isLoggedIn && <Notification message='To view application, you must login first.' />}
+      {!isLoggedIn && <Notification message='Для использования нужно для начала зайти в приложение.' />}
+      {!isLoggedIn && <Notification message='Если вы еще не зарегистрированы, пожалуйста зарегистрируйтесь.' />}
       {isLoggedIn && (
         <Notification
           message={`Hellow ${user.name}! You are logged in. Please visit Contacts page, to see your contacts.`}
