@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.d2921115.chunk.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.805f8a47.chunk.js",
-    "main.js.map": "/goit-react-hw-08-phonebook/static/js/main.805f8a47.chunk.js.map",
-    "runtime-main.js": "/goit-react-hw-08-phonebook/static/js/runtime-main.329385bf.js",
-    "runtime-main.js.map": "/goit-react-hw-08-phonebook/static/js/runtime-main.329385bf.js.map",
-    "static/js/2.597bf432.chunk.js": "/goit-react-hw-08-phonebook/static/js/2.597bf432.chunk.js",
-    "static/js/2.597bf432.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/2.597bf432.chunk.js.map",
-    "static/js/3.fc6719e2.chunk.js": "/goit-react-hw-08-phonebook/static/js/3.fc6719e2.chunk.js",
-    "static/js/3.fc6719e2.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/3.fc6719e2.chunk.js.map",
-    "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "static/css/main.d2921115.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/main.d2921115.chunk.css.map",
-    "static/js/2.597bf432.chunk.js.LICENSE.txt": "/goit-react-hw-08-phonebook/static/js/2.597bf432.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.4a8cf0fb.chunk.css",
+    "main.js": "/static/js/main.7c9e7327.chunk.js",
+    "main.js.map": "/static/js/main.7c9e7327.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c36a456e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c36a456e.js.map",
+    "static/js/2.6321e224.chunk.js": "/static/js/2.6321e224.chunk.js",
+    "static/js/2.6321e224.chunk.js.map": "/static/js/2.6321e224.chunk.js.map",
+    "static/js/3.908d1070.chunk.js": "/static/js/3.908d1070.chunk.js",
+    "static/js/3.908d1070.chunk.js.map": "/static/js/3.908d1070.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.4a8cf0fb.chunk.css.map": "/static/css/main.4a8cf0fb.chunk.css.map",
+    "static/js/2.6321e224.chunk.js.LICENSE.txt": "/static/js/2.6321e224.chunk.js.LICENSE.txt",
+    "static/media/background.25f6f965.jpg": "/static/media/background.25f6f965.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.329385bf.js",
-    "static/js/2.597bf432.chunk.js",
-    "static/css/main.d2921115.chunk.css",
-    "static/js/main.805f8a47.chunk.js"
+    "static/js/runtime-main.c36a456e.js",
+    "static/js/2.6321e224.chunk.js",
+    "static/css/main.4a8cf0fb.chunk.css",
+    "static/js/main.7c9e7327.chunk.js"
   ]
 }
