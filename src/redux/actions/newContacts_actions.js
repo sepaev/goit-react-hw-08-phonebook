@@ -2,7 +2,7 @@ import { createAction } from '@reduxjs/toolkit';
 let nameRef;
 let numberRef;
 
-export const addNewContactToState = createAction('newContact/create', e => {
+export const addNewContactAction = createAction('newContact/create', e => {
   e.preventDefault();
   nameRef = e.target.children[0].children[1];
   numberRef = e.target.children[1].children[1];

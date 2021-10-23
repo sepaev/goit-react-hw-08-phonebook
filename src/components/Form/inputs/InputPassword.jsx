@@ -1,7 +1,12 @@
 import css from '../Form.module.css';
 import InputMask from 'react-input-mask';
+import { useState } from 'react';
+import { inputChange } from '../../../redux/inputs/inputs-actions';
+import { useDispatch } from 'react-redux';
 
-const InputPassword = ({ status }) => {
+const InputPassword = ({ status = 'default' }) => {
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
   let label;
 
   switch (status) {
@@ -16,16 +21,25 @@ const InputPassword = ({ status }) => {
       break;
   }
 
+  const handleChange = ({ target: { value } }) => {
+    setPassword(value);
+  };
+
+  const handleBlur = () => {
+    dispatch(inputChange('password_' + status, password));
+  };
+
   return (
     <label className={css.form_label}>
       <span>{label}</span>
       <InputMask
-        key={'password' + status + 'Key'}
+        key={'password_' + status + '_key'}
         className={css.form_input}
-        type='password'
+        type='text'
         name='password'
-        pattern='(?=.*[0-9])'
-        title='Требуется хоть одна цыфра в строке'
+        value={password}
+        onChange={handleChange}
+        onBlur={handleBlur}
         required
       />
     </label>

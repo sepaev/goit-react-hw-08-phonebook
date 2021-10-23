@@ -1,28 +1,46 @@
 import css from './Form.module.css';
 import { InputMail, InputName, InputNumber, InputPassword } from './inputs';
-import { useDispatch } from 'react-redux';
-import { addNewContactToState } from '../../redux/actions/newContacts_actions.js';
+import { authOperations } from '../../redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewContactAction } from '../../redux/actions/newContacts_actions.js';
+import { getInputsSelector } from '../../redux/inputs/inputs-selector';
 
-function Form({ type, submitButtonText }) {
+function Form({ form, submitButtonText }) {
   const dispatch = useDispatch();
+  const inputs = useSelector(getInputsSelector);
+  const handleSubmit = e => {
+    e.preventDefault();
+    switch (form) {
+      case 'addNumber':
+        return dispatch(addNewContactAction(e));
+      case 'login':
+        dispatch(authOperations.logIn({ email: inputs.mail, password: inputs.password_default }));
+        break;
+      case 'register':
+        if (inputs.password_new !== inputs.password_repete) {
+          alert('пароли не ровны');
+          return;
+        }
+        dispatch(authOperations.register({ name: inputs.name, email: inputs.mail, password: inputs.password_new }));
+        break;
+      default:
+        break;
+    }
+    // console.dir(e.target.id);
+    // console.dir(e.target[e.target.length - 1]);
+  };
   return (
-    <form
-      onSubmit={e => {
-        console.log(e.target);
-        return dispatch(addNewContactToState(e));
-      }}
-      className={css.form}
-    >
-      {type === 'addNumber' && <InputName />}
-      {type === 'addNumber' && <InputNumber />}
-      {type === 'login' && <InputMail />}
-      {type === 'login' && <InputPassword />}
-      {type === 'register' && <InputName />}
-      {type === 'register' && <InputMail />}
-      {type === 'register' && <InputPassword status='new' />}
-      {type === 'register' && <InputPassword status='repete' />}
+    <form onSubmit={handleSubmit} className={css.form} id={form}>
+      {form === 'addNumber' && <InputName />}
+      {form === 'addNumber' && <InputNumber />}
+      {form === 'login' && <InputMail />}
+      {form === 'login' && <InputPassword />}
+      {form === 'register' && <InputName />}
+      {form === 'register' && <InputMail />}
+      {form === 'register' && <InputPassword status='new' />}
+      {form === 'register' && <InputPassword status='repete' />}
 
-      <button type='submit' className={css.form_submit}>
+      <button type='submit' className={css.form_submit} id={form}>
         {submitButtonText}
       </button>
     </form>

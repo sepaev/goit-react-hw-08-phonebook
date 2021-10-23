@@ -1,5 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { getEntitiesSelector, getFilterSelector } from '../selectors';
+import { getFilterSelector } from './filter-selectors';
+import { getEntitiesSelector } from '../contacts/contacts-selectors';
 import { doClearNumber, parseFilterQuery, clearDoubleIDs } from '../functions';
 
 const doFiltration = state => {
@@ -9,7 +10,6 @@ const doFiltration = state => {
   const makeFiltration = createSelector(
     [() => getEntitiesSelector(state), () => getFilterSelector(state)],
     (contacts, filter) => {
-      console.log(contacts);
       const { filterQueryText, filterQueryNumber } = parseFilterQuery(filter.toString());
       if (filterQueryText.length > 0 || filterQueryNumber.length > 0) {
         let filtredArray = [];

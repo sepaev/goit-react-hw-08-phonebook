@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
 import Notification from '../Notification';
 import { useSelector, useDispatch } from 'react-redux';
-import { makeSearch } from '../../redux/actions/filter_actions';
-import { removeContact } from '../../redux/operations/contactsOperations';
+import { makeSearch } from '../../redux/filter/filter-actions';
+import { removeContact } from '../../redux/contacts/contacts-operations';
 import { ContactsItem, ContactsList, DeleteButton, NumberSpan, SearchInput } from './Contacts.styled';
-import { getFiltredContactsSelector, getContactsSelector, getErrorSelector } from '../../redux/selectors';
+import { getFiltredContactsSelector } from '../../redux/filter/filter-selectors';
+import { getContactsSelector, getErrorSelector } from '../../redux/contacts/contacts-selectors';
 
 function Contacts() {
   const { entities } = useSelector(getContactsSelector);

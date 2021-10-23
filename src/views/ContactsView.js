@@ -4,7 +4,7 @@ import { Notify } from 'notiflix';
 import { clearNewContact } from '../redux/actions/newContacts_actions';
 import checkNewContactInState from '../redux/operations/newContactOperations';
 import { useEffect } from 'react';
-import { getContacts, addContact } from '../redux/operations/contactsOperations';
+import { getContacts, addContact } from '../redux/contacts/contacts-operations';
 import { getNewContactSelector, getEntitiesSelector } from '../redux/selectors';
 
 Notify.init({ position: 'center-top' });

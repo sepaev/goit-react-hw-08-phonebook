@@ -22,9 +22,9 @@ function Section({ title, component }) {
       <h1 className={css.section_title}>{title}</h1>
       {component === 'Main' && <MainPage />}
       {component === 'Contacts' && <Contacts />}
-      {component === 'AddNumber' && <Form type='addNumber' submitButtonText='Добавить контакт' />}
-      {component === 'Login' && <Form type='login' submitButtonText='Войти' />}
-      {component === 'Register' && <Form type='register' submitButtonText='Зарегистрироваться' />}
+      {component === 'AddNumber' && <Form form='addNumber' submitButtonText='Добавить контакт' />}
+      {component === 'Login' && <Form form='login' submitButtonText='Войти' />}
+      {component === 'Register' && <Form form='register' submitButtonText='Зарегистрироваться' />}
     </section>
   );
 }

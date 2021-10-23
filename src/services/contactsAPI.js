@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Notify } from 'notiflix';
 
-axios.defaults.baseURL = 'http://localhost:4321';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:4321';
 // add fake json
 // axios.defaults.baseURL = 'https://my-json-server.typicode.com/sepaev/goit-react-hw-08-phonebook/';
 

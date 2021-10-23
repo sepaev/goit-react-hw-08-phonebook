@@ -1,7 +1,18 @@
 import css from '../Form.module.css';
 import InputMask from 'react-input-mask';
+import { useState } from 'react';
+import { inputChange } from '../../../redux/inputs/inputs-actions';
+import { useDispatch } from 'react-redux';
 
 const InputNumber = () => {
+  const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const handleChange = ({ target: { value } }) => {
+    setNumber(value);
+  };
+  const handleBlur = () => {
+    dispatch(inputChange('number', number));
+  };
   return (
     <label className={css.form_label}>
       <span>Номер</span>
@@ -10,6 +21,9 @@ const InputNumber = () => {
         className={css.form_input}
         type='tel'
         name='number'
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={number}
         pattern='\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'
         placeholder='+38 (099) 999-99-99'
         mask='+38 (099) 999-99-99'

@@ -1,14 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { makeSearch } from './actions/filter_actions';
-import { addNewContactToState, clearNewContact } from './actions/newContacts_actions';
-import { getContacts, addContact, removeContact } from './operations/contactsOperations';
+import { makeSearch } from './filter/filter-actions';
+import { addNewContactAction, clearNewContact } from './actions/newContacts_actions';
+import { getContacts, addContact, removeContact } from './contacts/contacts-operations';
 
 export const filterReducer = createReducer('', { [makeSearch.type]: (_, { payload }) => payload });
 
 export const newContactReducer = createReducer(
   { newName: '', newNumber: '' },
   {
-    [addNewContactToState]: (_, { payload }) => payload,
+    [addNewContactAction]: (_, { payload }) => payload,
     [clearNewContact]: (_, { payload }) => payload,
   },
 );
