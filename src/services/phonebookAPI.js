@@ -46,3 +46,31 @@ export async function deleteContact(id, name) {
       return false;
     });
 }
+
+export async function signup(newUser) {
+  return await axios
+    .post('/users/signup', newUser)
+    .then(response => {
+      console.log('res -', response);
+      alert();
+      if (response.status === 400) {
+      }
+      Notify.success(`Contact ${newUser.name} was registred successfully`);
+      console.log('data - ', response.data);
+      return response.data;
+    })
+    .catch(error => {
+      console.log('error.response.data - ', error.response.data);
+      Notify.failure(`${error.name}. ${error.message}`);
+      throw new Error(error);
+    });
+}
+
+export async function login(email, password) {
+  try {
+    const { data } = await axios.post('/users/login', { email, password });
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
