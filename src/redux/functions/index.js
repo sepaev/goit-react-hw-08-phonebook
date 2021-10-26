@@ -4,3 +4,5 @@ export { default as clearDoubleIDs } from './clearDoubleIDs';
 export { default as doClearName } from './doClearName';
 export { default as doClearNumber } from './doClearNumber';
 export { default as parseFilterQuery } from './parseFilterQuery';
+export { default as formSwitchDispatch } from './formSwitchDispatch';
+export { default as translateError } from './translateError';

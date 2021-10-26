@@ -12,7 +12,7 @@ function MainPage({ message }) {
       {!isLoggedIn && <Notification message='Если вы еще не зарегистрированы, пожалуйста зарегистрируйтесь.' />}
       {isLoggedIn && (
         <Notification
-          message={`Hellow ${user.name}! You are logged in. Please visit Contacts page, to see your contacts.`}
+          message={`Привет ${user.name}! Ты вошел в приложение. Чтобы увидеть свои контакты - перейди на страницу "Контакты".`}
         />
       )}
     </div>

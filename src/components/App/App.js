@@ -1,12 +1,14 @@
 import { Route, Switch } from 'react-router-dom';
-import { HomeView, LoginView, RegisterView, ContactsView, NotFoundView } from '../../views';
+import { HomeView, LoginView, RegisterView, ContactsView } from '../../views';
 import { AppBar } from '../AppBar';
 import { useSelector } from 'react-redux';
 import { getAuthSelector } from '../../redux/selectors';
 import background from '../../images/background.jpg';
 import css from './App.module.css';
+import { tokenToAxios } from '../../services/phonebookAPI';
 function App() {
-  const { isLoggedIn } = useSelector(getAuthSelector);
+  const { isLoggedIn, token } = useSelector(getAuthSelector);
+  if (token) tokenToAxios.set(token);
   return (
     <div
       className={css._app}
@@ -36,7 +38,8 @@ function App() {
             </Route>
           )}
           <Route path='/'>
-            <NotFoundView />
+            <HomeView />
+            {/* <NotFoundView /> */}
           </Route>
         </Switch>
       </div>

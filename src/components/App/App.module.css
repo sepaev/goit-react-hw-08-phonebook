@@ -2,4 +2,5 @@
 ._app {
   min-height: 100vh;
   background-repeat: no-repeat;
+  background-position: center;
 }
