@@ -1,33 +1,10 @@
 import css from '../Form.module.css';
 import InputMask from 'react-input-mask';
-import { useState } from 'react';
-import { inputChange } from '../../../redux/inputs/inputs-actions';
-import { useDispatch } from 'react-redux';
 
-const InputPassword = ({ status = 'default' }) => {
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-  let label;
-
-  switch (status) {
-    case 'new':
-      label = 'Придумайте пароль';
-      break;
-    case 'repete':
-      label = 'Повторите пароль';
-      break;
-    default:
-      label = 'Введите пароль';
-      break;
-  }
-
-  const handleChange = ({ target: { value } }) => {
-    setPassword(value);
-  };
-
-  const handleBlur = () => {
-    dispatch(inputChange('password_' + status, password));
-  };
+const InputPassword = ({ value, onBlur, onChange, status = 'default' }) => {
+  let label = 'Введите пароль';
+  if (status === 'new') label = 'Придумайте пароль';
+  if (status === 'repete') label = 'Повторите пароль';
 
   return (
     <label className={css.form_label}>
@@ -37,9 +14,9 @@ const InputPassword = ({ status = 'default' }) => {
         className={css.form_input}
         type='text'
         name='password'
-        value={password}
-        onChange={handleChange}
-        onBlur={handleBlur}
+        value={value}
+        onChange={({ target: { value } }) => onChange('password_' + status, value)}
+        onBlur={() => onBlur('password_' + status)}
         required
       />
     </label>

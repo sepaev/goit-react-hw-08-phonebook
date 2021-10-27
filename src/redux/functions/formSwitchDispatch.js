@@ -4,7 +4,7 @@ import { authOperations } from '../../redux/auth';
 
 function formSwitchDispatch(event, form, dispatch, inputs) {
   switch (form) {
-    case 'addNumber':
+    case 'addContact':
       return dispatch(addNewContactAction(event));
     case 'login':
       const email = inputs.mail;

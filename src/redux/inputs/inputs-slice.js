@@ -1,22 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { inputChange } from './inputs-actions';
-
-const initialState = {
-  mail: '',
-  name: '',
-  number: '',
-  password_new: '',
-  password_repete: '',
-  password_default: '',
-};
+import { inputChange, inputsClear } from './inputs-actions';
+import initialState from './inputs-initial';
 
 const inputsSlice = createSlice({
   name: 'inputs',
   initialState,
   extraReducers: {
-    [inputChange](state, { payload: { inputName, value } }) {
+    [inputChange]: (state, { payload: { inputName, value } }) => {
       state[inputName] = value;
     },
+    [inputsClear]: (_, { payload }) => payload.initialState,
   },
 });
 

@@ -2,7 +2,7 @@ import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/
 import logger from 'redux-logger';
 import { filterReducer, newContactReducer, isLoading, entities, error } from './reducer';
 import authReducer from './auth/auth-slice';
-import inputsReducer from './inputs/inputs-slice';
+import { inputsReducer } from './inputs';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 

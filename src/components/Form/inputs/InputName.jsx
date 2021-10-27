@@ -1,21 +1,7 @@
 import css from '../Form.module.css';
 import InputMask from 'react-input-mask';
-import { useEffect, useState } from 'react';
-import { inputChange } from '../../../redux/inputs/inputs-actions';
-import { useDispatch } from 'react-redux';
 
-const InputName = ({ value, disabled = false }) => {
-  const [name, setName] = useState('');
-  const dispatch = useDispatch();
-  const handleBlur = () => {
-    dispatch(inputChange('name', name));
-  };
-  const handleChange = ({ target: { value } }) => {
-    setName(value);
-  };
-  useEffect(() => {
-    if (value) setName(value);
-  }, [value]);
+const InputName = ({ value, onBlur, onChange, disabled = false }) => {
   return (
     <label className={css.form_label}>
       <span>Имя</span>
@@ -24,9 +10,9 @@ const InputName = ({ value, disabled = false }) => {
         className={css.form_input}
         type='text'
         name='name'
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={name}
+        onChange={({ target: { value } }) => onChange('name', value)}
+        onBlur={() => onBlur('name')}
+        value={value}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         placeholder='Арнольд Шварценеггер'
         maxLength='25'

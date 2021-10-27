@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <Section title='Телефонная книга' component='AddNumber' />
+      <Section title='Телефонная книга' component='addContact' />
       <hr />
       <Section title='Контакты' component='Contacts' />
     </>
