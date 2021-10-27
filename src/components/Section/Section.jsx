@@ -25,6 +25,7 @@ function Section({ title, component }) {
       {component === 'AddNumber' && <Form form='addNumber' submitButtonText='Добавить контакт' />}
       {component === 'Login' && <Form form='login' submitButtonText='Войти' />}
       {component === 'Register' && <Form form='register' submitButtonText='Зарегистрироваться' />}
+      {component === 'UserInfo' && <Form form='userinfo' submitButtonText='Изменить' isDisabled={true} />}
     </section>
   );
 }

@@ -18,7 +18,7 @@ function UserMenu() {
         className={css._userMail}
         activeClassName={css._activeLink}
       >
-        добро пожаловать {user.name}
+        {user.name}
       </NavLink>
       <NavLink
         to={{ pathname: '/', state: { pathback: null } }}

@@ -21,10 +21,10 @@ function formSwitchDispatch(event, form, dispatch, inputs) {
         break;
       }
       dispatch(authOperations.register({ name: inputs.name, email: inputs.mail, password: inputs.password_new }));
-
       break;
 
     default:
+      Notify.failure(`Функция в разработке`);
       break;
   }
 }

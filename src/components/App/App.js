@@ -1,14 +1,19 @@
 import { Route, Switch } from 'react-router-dom';
-import { HomeView, LoginView, RegisterView, ContactsView } from '../../views';
+import { HomeView, LoginView, RegisterView, ContactsView, UserInfo } from '../../views';
 import { AppBar } from '../AppBar';
-import { useSelector } from 'react-redux';
-import { getAuthSelector } from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
 import background from '../../images/background.jpg';
 import css from './App.module.css';
-import { tokenToAxios } from '../../services/phonebookAPI';
+import { authOperations } from '../../redux/auth';
+import { useEffect } from 'react';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 function App() {
-  const { isLoggedIn, token } = useSelector(getAuthSelector);
-  if (token) tokenToAxios.set(token);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  useEffect(() => {
+    dispatch(authOperations.fetchUser());
+  }, [dispatch]);
   return (
     <div
       className={css._app}
@@ -22,11 +27,12 @@ function App() {
           <Route path='/' exact>
             <HomeView />
           </Route>
-          {isLoggedIn && (
-            <Route path='/contacts' exact>
-              <ContactsView />
-            </Route>
-          )}
+          <PrivateRoute path='/contacts' exact>
+            <ContactsView />
+          </PrivateRoute>
+          <PrivateRoute path='/userinfo' exact>
+            <UserInfo />
+          </PrivateRoute>
           {!isLoggedIn && (
             <Route path='/login'>
               <LoginView />

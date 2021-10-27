@@ -6,13 +6,13 @@ import { getInputsSelector } from '../../redux/inputs/inputs-selectors';
 import { authSelectors } from '../../redux/auth';
 import Notification from '../Notification';
 
-import { formSwitchDispatch, translateError } from '../../redux/functions';
+import { formSwitchDispatch } from '../../redux/functions';
 
-function Form({ form, submitButtonText }) {
+function Form({ form, submitButtonText, isDisabled = false }) {
   const dispatch = useDispatch();
   const inputs = useSelector(getInputsSelector);
+  const { name, email } = useSelector(authSelectors.getUserSelector);
   const error = useSelector(authSelectors.getErrorSelector);
-  const message = translateError(error);
   const handleSubmit = e => {
     e.preventDefault();
     formSwitchDispatch(e, form, dispatch, inputs);
@@ -29,10 +29,14 @@ function Form({ form, submitButtonText }) {
       {form === 'register' && <InputMail />}
       {form === 'register' && <InputPassword status='new' />}
       {form === 'register' && <InputPassword status='repete' />}
-      <button type='submit' className={css.form_submit} id={form}>
+      {form === 'userinfo' && <InputMail value={email} disabled={true} />}
+      {form === 'userinfo' && <InputName value={name} disabled={true} />}
+      {/* {form === 'userinfo' && <InputPassword status='new' disabled={true} />}
+      {form === 'userinfo' && <InputPassword status='repete' disabled={true} />} */}
+      <button type='submit' className={css.form_submit} id={form} disabled={isDisabled}>
         {submitButtonText}
       </button>
-      {error && <Notification message={message} type='error' />}
+      {error && <Notification message={error === 'Rejected' ? '' : error} type='error' />}
     </form>
   );
 }

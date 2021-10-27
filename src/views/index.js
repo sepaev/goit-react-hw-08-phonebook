@@ -3,3 +3,4 @@ export { default as ContactsView } from './ContactsView';
 export { default as RegisterView } from './RegisterView';
 export { default as NotFoundView } from './NotFoundView';
 export { default as HomeView } from './HomeView';
+export { default as UserInfo } from './UserInfo';

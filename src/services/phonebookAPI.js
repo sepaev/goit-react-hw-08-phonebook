@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Notify } from 'notiflix';
-import translateErorr from '../redux/functions/translateError';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -13,10 +12,6 @@ export const tokenToAxios = {
   },
 };
 
-function onError(error) {
-  Notify.failure(translateErorr(error));
-  throw new Error(error.message);
-}
 export async function fetchContacts() {
   return await axios
     .get('/contacts')
@@ -78,7 +73,7 @@ export async function login(user) {
     .post('/users/login', user)
     .then(({ data }) => {
       tokenToAxios.set(data.token);
-      Notify.success(`Приветствую ${user.name}! Вы вошли.`);
+      Notify.success(`Приветствую ${data.user.name}! Вы вошли.`);
       return data;
     })
     .catch(error => {
@@ -94,12 +89,25 @@ export async function logout(user) {
     .then(response => {
       Notify.success(`До скорой встречи!`);
       tokenToAxios.unset();
-      console.log(response.data);
       return response.data;
     })
     .catch(error => {
       const message = error.message.includes('400') ? 'Вы не можете этого сделать' : error.message;
       Notify.failure(message);
       throw new Error(message);
+    });
+}
+
+export async function refresh(persistedToken) {
+  tokenToAxios.set(persistedToken);
+  return await axios
+    .get('/users/current')
+    .then(({ data }) => {
+      Notify.success(`Приветствую ${data.name}!`);
+      return data;
+    })
+    .catch(error => {
+      Notify.failure('Ошибка. Таймаут авторизации. Попробуйте зайти снова.');
+      throw new Error(error.message);
     });
 }
