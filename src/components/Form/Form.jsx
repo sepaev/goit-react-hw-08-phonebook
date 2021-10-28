@@ -20,6 +20,7 @@ function Form({ form, submitButtonText, isDisabled = false }) {
     console.log(inputsState);
     formSwitchDispatch(e, form, dispatch, inputsState);
     dispatch(inputsClear());
+    setInputs(initialState);
   };
 
   const onBlur = input => {

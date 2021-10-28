@@ -10,10 +10,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.23.0",
-    "concurrently": "^6.3.0",
     "eslint": "^7.32.0",
     "gh-pages": "^3.2.3",
-    "json-server": "^0.17.0",
     "mrm": "^3.0.10",
     "notiflix": "^3.1.0",
     "prettier": "^2.4.1",
@@ -29,12 +27,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "startWithServer": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 4321\"",
     "build": "react-scripts build  --public-url /goit-react-hw-08-phonebook",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "server": "json-server --watch db.json --port 4321"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

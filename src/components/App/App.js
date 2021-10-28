@@ -24,19 +24,19 @@ function App() {
       <div className='Container'>
         <AppBar />
         <Switch>
-          <Route path='/' exact>
+          <PublicRoute exact path='/'>
             <HomeView />
-          </Route>
-          <PrivateRoute path='/contacts' exact>
+          </PublicRoute>
+          <PrivateRoute exact path='/contacts'>
             <ContactsView />
           </PrivateRoute>
-          <PrivateRoute path='/userinfo' exact>
+          <PrivateRoute exact path='/userinfo'>
             <UserInfo />
           </PrivateRoute>
-          <PublicRoute path='/login'>
+          <PublicRoute path='/login' restricted>
             <LoginView />
           </PublicRoute>
-          <PublicRoute path='/register'>
+          <PublicRoute path='/register' restricted>
             <RegisterView />
           </PublicRoute>
           <Route path='/'>
