@@ -3,7 +3,6 @@ function parseFilterQuery(filterQuery) {
   let filterQueryNumber = '';
   if (filterQuery) {
     if (filterQuery.match(/\d+/)) {
-      console.log('filterQuery -- ', filterQuery);
       filterQueryNumber = filterQuery.match(/\d+/).toString();
       const queries = filterQuery.split(filterQueryNumber);
       const query = queries[0] || queries[1];

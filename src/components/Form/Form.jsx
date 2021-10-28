@@ -19,13 +19,12 @@ function Form({ form, submitButtonText, isDisabled = false }) {
   const error = useSelector(authSelectors.getErrorSelector);
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(inputsState);
     formSwitchDispatch(e, form, dispatch, inputsState);
-    dispatch(inputsClear());
   };
   useEffect(() => {
+    dispatch(inputsClear());
     setInputs(initialState);
-  }, [user, form, entities]);
+  }, [user, form, entities, dispatch]);
 
   const onBlur = input => {
     dispatch(inputChange(input, inputs[input]));

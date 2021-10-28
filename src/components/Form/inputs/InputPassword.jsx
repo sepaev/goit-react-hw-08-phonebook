@@ -13,9 +13,9 @@ const InputPassword = ({ value, onBlur, onChange, status = 'default' }) => {
         key={'password_' + status + '_key'}
         className={css.form_input}
         type='password'
-        name='password'
+        name={'password_' + status}
         value={value}
-        autocomplete={config.auto}
+        // autocomplete={config.auto}
         onChange={({ target: { value } }) => onChange('password_' + status, value)}
         onBlur={() => onBlur('password_' + status)}
         required
