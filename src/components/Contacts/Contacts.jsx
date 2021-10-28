@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import Notification from '../Notification';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeSearch } from '../../redux/filter/filter-actions';
@@ -6,18 +6,25 @@ import { removeContact } from '../../redux/contacts/contacts-operations';
 import { ContactsItem, ContactsList, DeleteButton, NumberSpan, SearchInput } from './Contacts.styled';
 import { getFiltredContactsSelector } from '../../redux/filter/filter-selectors';
 import { getContactsSelector, getErrorSelector } from '../../redux/contacts/contacts-selectors';
+import { getContacts } from '../../redux/contacts/contacts-operations';
+import { authSelectors } from '../../redux/auth';
 
 function Contacts() {
   const { entities } = useSelector(getContactsSelector);
   const filterdContacts = useSelector(getFiltredContactsSelector);
   const stateError = useSelector(getErrorSelector);
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  useEffect(() => {
+    if (isLoggedIn) dispatch(getContacts());
+  }, [dispatch, isLoggedIn]);
 
   const message = entities.length
     ? 'No contacts found.'
     : stateError
     ? stateError.message + '. Contacts could not be loaded to be displayed on the screen.'
     : 'You have no contacts yet.';
-  const dispatch = useDispatch();
 
   return (
     <Fragment>

@@ -1,10 +1,11 @@
 import css from './Form.module.css';
 import { InputMail, InputName, InputNumber, InputPassword } from './inputs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initialState, inputsSelectors } from '../../redux/inputs';
 import { inputChange, inputsClear } from '../../redux/inputs/inputs-actions';
 import { authSelectors } from '../../redux/auth';
+import { getContactsSelector } from '../../redux/contacts/contacts-selectors';
 import Notification from '../Notification';
 import { formSwitchDispatch } from '../../redux/functions';
 
@@ -14,14 +15,17 @@ function Form({ form, submitButtonText, isDisabled = false }) {
   const dispatch = useDispatch();
   const inputsState = useSelector(inputsSelectors.getInputsSelector);
   const user = useSelector(authSelectors.getUserSelector);
+  const { entities } = useSelector(getContactsSelector);
   const error = useSelector(authSelectors.getErrorSelector);
   const handleSubmit = e => {
     e.preventDefault();
     console.log(inputsState);
     formSwitchDispatch(e, form, dispatch, inputsState);
     dispatch(inputsClear());
-    setInputs(initialState);
   };
+  useEffect(() => {
+    setInputs(initialState);
+  }, [user, form, entities]);
 
   const onBlur = input => {
     dispatch(inputChange(input, inputs[input]));

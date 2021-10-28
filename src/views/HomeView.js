@@ -7,7 +7,7 @@ const HomeView = () => {
   return (
     <>
       <Section title='ЛУЧШЕЕ ПРИЛОЖЕНИЕ ТЕЛЕФОННАЯ КНИГА' component='Main' />
-      {isLoggedIn && <hr />}
+      {/* {isLoggedIn && <hr />} */}
       {isLoggedIn && <Section title='Контакты' component='Contacts' />}
     </>
   );
