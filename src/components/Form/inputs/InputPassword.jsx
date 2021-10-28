@@ -12,7 +12,7 @@ const InputPassword = ({ value, onBlur, onChange, status = 'default' }) => {
       <InputMask
         key={'password_' + status + '_key'}
         className={css.form_input}
-        type='text'
+        type='password'
         name='password'
         value={value}
         onChange={({ target: { value } }) => onChange('password_' + status, value)}
