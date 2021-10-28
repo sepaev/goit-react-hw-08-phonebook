@@ -17,7 +17,7 @@ function Navigation() {
           className={css._link}
           activeClassName={css._activeLink}
         >
-          Контакты
+          Добавить контакты
         </NavLink>
       )}
     </nav>
